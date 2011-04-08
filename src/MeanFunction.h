@@ -47,4 +47,18 @@ class LogMean : public MeanFunction {
   Col<REAL> source;
 };
 
+class WallMean : public MeanFunction {
+ public:
+  WallMean();
+  WallMean(const Col<REAL>& param);
+  void SetParams(const Col<REAL>& param);
+  REAL Eval(const Col<REAL>& x);
+  void Grad(Col<REAL> &grad, const Col<REAL>& x);
+  void Hessian(Mat<REAL> &hessian, const Col<REAL>& x);
+  void GradX(Col<REAL> &grad, const Col<REAL>& x);
+ private:
+  Col<REAL> source;
+};
+
+
 #endif
