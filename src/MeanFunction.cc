@@ -116,7 +116,7 @@ void LogMean::Grad(Col<REAL> &grad, const Col<REAL>& x)
 
   grad(3)=(-10*param(1)*(source(1) - x(1)))/((pow(source(0) - x(0),2) + pow(source(1) - x(1),2))*log(10));
 
-  grad = grad % this->grad_mult;
+  grad *= this->grad_mult;
 }
 
 void LogMean::Hessian(Mat<REAL> &H, const Col<REAL>& x)
