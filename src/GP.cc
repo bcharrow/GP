@@ -164,7 +164,7 @@ void GP::GradLikelihoodMeanParams(Col<REAL> &grad)
   Mat<REAL> grad_tmp(grad.n_rows, X.n_cols);
   for(unsigned int i=0; i < X.n_cols; ++i) {
     this->mean->Grad(tmp, X.col(i));
-    grad_tmp.col(i) = -tmp;
+    grad_tmp.col(i) = tmp;
   }
 
   grad = grad_tmp*this->alpha;
