@@ -411,6 +411,7 @@ void GP::OptimizeNoiseParam(REAL &noise_param, int max_iterations)
   
   opt.Initialize(noise_params, &f_eval_noise, &df_eval_noise, &fdf_eval_noise, 0.5, 0.1);
   opt.Optimize(noise_params, max_iterations);
+  noise_param = noise_params(0);
 }
 
 void GP::OptimizeMeanParam(Col<REAL> &mean_param, int max_iterations)
