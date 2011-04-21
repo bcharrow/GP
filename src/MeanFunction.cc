@@ -88,8 +88,10 @@ void LogMean::SetParams(const Col<REAL>& param)
 REAL LogMean::Eval(const Col<REAL>& x)
 {
   REAL dist = norm(source-x, 2);
-  if(dist < 1)
-    return -param(0);
+  if(param.n_elem > 4 && dist < param(4))
+    return -param(0) - 10*param(1)*log10(param(4));
+  else if (dist < 1e-6)
+    return -param(0) - 10 * param(1) * log10(1e-6);
   else
     return -param(0) - 10*param(1)*log10(dist);
 }
